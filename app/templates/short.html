@@ -8,7 +8,7 @@
     </script>
     <h1>Shortify your link!</h1>
     <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
+        
         <p>
             {{ form.link.label }}<br>
             {{ form.link(size=32) }}<br>
@@ -23,11 +23,8 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <p>{{ message }}</p>
-    {% endfor %}
+    {% if form.shortened is defined %}
+    {{form.shortened}}
     {% endif %}
-    {% endwith %}
+
 {% endblock %}
