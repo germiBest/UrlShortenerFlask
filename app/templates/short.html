@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <script>
+    function outputUpdate(expired) {
+        document.querySelector('#selected-expired').value = expired;
+    }
+    </script>
+    <h1>Shortify your link!</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.link.label }}<br>
+            {{ form.link(size=32) }}<br>
+            {% for error in form.link.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.expired.label }}<br>
+            {{ form.expired(min=1, max=365, oninput="outputUpdate(value)") }}<br>
+            <output for="expired" id="selected-expired">{{ form.expired.data }}</output>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+{% endblock %}

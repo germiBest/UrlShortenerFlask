@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Url Shortener</title>
+    </head>
+    <body>
+        <div>
+            Url shortener:
+            <a href="{{ url_for('short') }}">Short</a>
+            <a href="{{ url_for('get_api') }}">API</a>
+        </div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
