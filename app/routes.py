@@ -1,8 +1,10 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import ShortenerForm, ApiForm
-from app.models import Links, Api
+from app.models import Links, Api, clear
 import re
+from datetime import date, timedelta
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/short', methods=['GET', 'POST'])
@@ -36,5 +38,8 @@ def get_api():
 
 @app.route('/<redir>', methods=['GET'])
 def redir(redir):
+    if app.last_cleared < date.today():
+        clear()
+        app.last_cleared = date.today()
     link = Links.query.filter_by(short=redir).first_or_404()
     return redirect(link.link)

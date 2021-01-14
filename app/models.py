@@ -49,3 +49,7 @@ class Api(db.Model):
             return self.key_gen()
         return key
         
+def clear():
+    print("cleared")
+    delete = Links.query.filter(Links.expired < date.today()).delete()
+    db.session.commit()

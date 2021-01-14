@@ -1,14 +1,39 @@
 <html>
     <head>
         <title>Url Shortener</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+
+            main {
+                flex: 1 0 auto;
+            }
+        </style>
     </head>
     <body>
-        <div>
-            Url shortener:
-            <a href="{{ url_for('short') }}">Short</a>
-            <a href="{{ url_for('get_api') }}">API</a>
-        </div>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Url Shortener</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{{ url_for('short') }}">Short</a></li>
+                <li><a href="{{ url_for('get_api') }}">API</a></a></li>
+                </ul>
+            </div>
+        </nav>
         <hr>
-        {% block content %}{% endblock %}
+        <main class="center"><div class="container">{% block content %}{% endblock %}</div></main>
+        <footer class="page-footer">
+            <div class="footer-copyright center">
+                <div class="container">
+                <a class="grey-text text-lighten-4 center" href="https://github.com/germiBest">GitHub</a>
+                </div>
+            </div>
+            </footer>
     </body>
 </html>

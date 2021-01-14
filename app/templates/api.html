@@ -5,9 +5,11 @@
     <form action="" method="post" novalidate>
         
         <p>To get your API key press the button bellow</p>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit(class_="btn") }}</p>
     </form>
     {% if form.api is defined %}
-    {{form.api}}
+    <p>Your api key is: {{form.api}}</p>
     {% endif %}
+    <hr>
+    <h2></h2>
 {% endblock %}
