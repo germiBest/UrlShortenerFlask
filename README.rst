@@ -7,7 +7,12 @@ Requirments
 """""""""""""
 ::
 
-	pip install requirements.txt
+	pip3 install Flask
+	pip3 install Flask-RESTful
+	pip3 install Flask-SQLAlchemy
+	pip3 install Flask-WhooshAlchemy
+	pip3 install Flask-WTF
+	pip3 install SQLAlchemy
 
 Installing::
 """"""""""""
